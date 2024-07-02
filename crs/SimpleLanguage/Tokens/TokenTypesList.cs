@@ -8,7 +8,7 @@ internal class TokenTypesList
         { "END", new TokenType("END", "^;") },
         { "SPACE", new TokenType("SPACE", "^[ \\n\\t\\r]") },
         { "ASSIGN", new TokenType("ASSIGN", "^[=]") },
-        { "PRINT", new TokenType("PRINT", "^PRINT") },
+        { "PRINT", new TokenType("PRINT", "^Print") },
         { "PLUS", new TokenType("PLUS", "^[+]") },
         { "MINUS", new TokenType("MINUS", "^[-]") },
         { "LPAR", new TokenType("LPAR", "^\\(") },

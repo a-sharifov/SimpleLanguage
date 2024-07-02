@@ -4,9 +4,9 @@ var lexer = new Lexer(
     @"
         a = 2 + 3 + 5;
         b = 2 + 3 + 5;
-        PRINT a; 
+        Print a; 
         a = a - b;
-        PRINT a;
+        Print a;
     ");
 
 lexer.Analyze();

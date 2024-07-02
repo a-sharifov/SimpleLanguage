@@ -2,16 +2,16 @@
 
 internal class TokenTypesList
 {
-    public static Dictionary<string, TokenType> Values = new() {
-        { "^[0-9]*", new TokenType("NUMBER", "^[0-9]*") },
-        { "^[a-z]*", new TokenType("VARIABLE", "^[a-z]*") },
-        { "^;", new TokenType("END", "^;") },
-        { "^[ \\n\\t\\r]", new TokenType("SPACE", "^[ \\n\\t\\r]") },
-        { "^ASSIGN", new TokenType("ASSIGN", "^ASSIGN") },
-        { "^PRINT", new TokenType("PRINT", "^PRINT") },
-        { "^PLUS", new TokenType("PLUS", "^PLUS") },
-        { "^MINUS", new TokenType("MINUS", "^MINUS") },
-        { "^\\(", new TokenType("LPAR", "^\\(") },
-        { "^\\)", new TokenType("RPAR", "^\\)") },
+    public static Dictionary<string, TokenType> TokenTypes = new() {
+        { "NUMBER", new TokenType("NUMBER", "^[0-9]*") },
+        { "VARIABLE", new TokenType("VARIABLE", "^[a-z]*") },
+        { "END", new TokenType("END", "^;") },
+        { "SPACE", new TokenType("SPACE", "^[ \\n\\t\\r]") },
+        { "ASSIGN", new TokenType("ASSIGN", "^[=]") },
+        { "PRINT", new TokenType("PRINT", "^PRINT") },
+        { "PLUS", new TokenType("PLUS", "^[+]") },
+        { "MINUS", new TokenType("MINUS", "^[-]") },
+        { "LPAR", new TokenType("LPAR", "^\\(") },
+        { "RPAR", new TokenType("RPAR", "^\\)") },
     };
 }

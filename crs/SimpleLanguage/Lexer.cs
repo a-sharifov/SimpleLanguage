@@ -1,19 +1,20 @@
 ﻿using SimpleLanguage.Tokens;
+using System.Text.RegularExpressions;
 
 namespace SimpleLanguage;
 
 internal class Lexer
 {
-    public string Text { get; set; }
+    public string Code { get; set; }
     public int Position { get; set; }
-    public Dictionary<string, TokenType> Tokens = [];
+    public List<Token> Tokens = [];
 
-    public Lexer(string text)
+    public Lexer(string code)
     {
-        Text = text;
+        Code = code;
     }
 
-    public Dictionary<string, TokenType> Analyze()
+    public List<Token> Analyze()
     {
         while (Next())
         {
@@ -25,19 +26,33 @@ internal class Lexer
 
     public bool Next()
     {
-        if(Position > Tokens.Count)
+        if (Position >= Code.Length)
         {
             return false;
         }
 
+        var tokenTypesList = TokenTypesList.TokenTypes.Values;
 
-        var tokenTypesList = TokenTypesList.Values;
-
-        for (int i = 0; i < tokenTypesList.Count; i++)
+        foreach (var tokenType in tokenTypesList)
         {
+            var regex = new Regex(tokenType.Regex);
+            var substring = Code[Position..];
+            var match = regex.Match(substring);
 
+            if (match.Success && match.Value != string.Empty)  
+            {
+                Position += match.Length;
+                if (tokenType.Name != "SPACE") 
+                {
+                    var token = new Token(tokenType, match.Value, Position);
+                    Tokens.Add(token);
+                    //Console.WriteLine(token.ToString());
+                }
+                return true;
+            }
         }
 
+        throw new Exception($"{Position} - position error");
     }
 
 }
